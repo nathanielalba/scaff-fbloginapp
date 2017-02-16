@@ -1,26 +1,35 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { Navigator } from 'react-native'
+
+// routes
+import routes from './routes';
+
+// components
+import { default as Login } from './components/Login'
+
 
 export class fbloginapp extends Component {
   constructor(props) {
-    super(props);
+    super(props)
+
+    this.renderScene = this.renderScene.bind(this)
+  }
+
+  renderScene(route, navigator) {
+    switch (route.title) {
+      case 'login':
+        return <Login navigator={navigator} />;
+    }
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Test</Text>
-      </View>
+      <Navigator
+        initialRoute={routes[0]}
+        initialRouteStack={routes}
+        renderScene={this.renderScene} />
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
 
 export default fbloginapp
