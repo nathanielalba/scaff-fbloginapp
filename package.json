@@ -12,7 +12,7 @@
     "react-native": "0.41.2",
     "react-native-datepicker": "^1.4.4",
     "react-native-fbsdk": "^0.5.0",
-    "react-native-simple-radio-button": "^2.4.2"
+    "react-native-radio-button": "^1.0.2"
   },
   "devDependencies": {
     "babel-jest": "18.0.0",

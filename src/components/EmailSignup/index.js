@@ -1,16 +1,11 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions, TextInput } from 'react-native'
-import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button'
+import RadioButton from 'react-native-radio-button'
 import DatePicker from 'react-native-datepicker'
 import moment from 'moment';
 
 
 const { width } = Dimensions.get('window')
-
-const radioProps = [
-  { label: 'Male', value: 0 },
-  { label: 'Female', value: 1 }
-]
 
 export class EmailSignup extends Component {
   constructor(props) {
@@ -18,7 +13,8 @@ export class EmailSignup extends Component {
 
     this.state = {
       value: 0,
-      date: moment().format('YYYY-MM-DD')
+      date: moment().format('YYYY-MM-DD'),
+      selected: ''
     }
 
     this.navigateFacebook = this.navigateFacebook.bind(this)
@@ -54,14 +50,24 @@ export class EmailSignup extends Component {
             confirmBtnText='Confirm'
             cancelBtnText='Cancel'
             showIcon={false}
-            onDateChate={(date) => { this.setState({ date })}} />
-          <RadioForm
-            radio_props={radioProps}
-            initial={this.state.value}
-            formHorizontal={true}
-            animation={true}
-            labelHorizontal={true}
-            onPress={value => { this.setState({ value }) }} />
+            onDateChate={(date) => { this.setState({ date })}}
+          />
+        <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 10 }}>
+              <RadioButton
+                animation={'bounceIn'}
+                isSelected={this.state.selected == 'male' ? true : false }
+                onPress={() => this.setState({ selected: 'male' })} />
+              <Text style={{ marginLeft: 10 }}>Male</Text>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 10 }}>
+              <RadioButton
+                animation={'bounceIn'}
+                isSelected={this.state.selected == 'female' ? true : false }
+                onPress={() => this.setState({ selected: 'female' })} />
+              <Text style={{ marginLeft: 10 }}>Female</Text>
+            </View>
+          </View>
           <TouchableOpacity
             style={styles.signup}
             onPress={this.signup}>
@@ -89,7 +95,8 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 2,
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    alignItems: 'center'
   },
   signup: {
     width: width * 0.35,

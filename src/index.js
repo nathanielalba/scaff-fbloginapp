@@ -22,10 +22,10 @@ export class fbloginapp extends Component {
   renderScene(route, navigator) {
     switch (route.title) {
       case 'splash':
-        return <Splash navigator={navigator} />;
+        // return <Splash navigator={navigator} />;
         // return <Signup navigator={navigator} />;
         // return <Login navigator={navigator} />;
-        // return <EmailSignup navigator={navigator} />;
+        return <EmailSignup navigator={navigator} />;
       case 'signup':
         return <Signup navigator={navigator} />;
       case 'emailsignup':
