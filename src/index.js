@@ -5,7 +5,9 @@ import { Navigator } from 'react-native'
 import routes from './routes';
 
 // components
+import { default as Splash } from './components/Splash'
 import { default as Login } from './components/Login'
+import { default as Signup } from './components/Signup'
 
 
 export class fbloginapp extends Component {
@@ -17,6 +19,12 @@ export class fbloginapp extends Component {
 
   renderScene(route, navigator) {
     switch (route.title) {
+      case 'splash':
+        return <Splash navigator={navigator} />;
+        // return <Signup navigator={navigator} />;
+        // return <Login navigator={navigator} />;
+      case 'signup':
+        return <Signup navigator={navigator} />;
       case 'login':
         return <Login navigator={navigator} />;
     }
