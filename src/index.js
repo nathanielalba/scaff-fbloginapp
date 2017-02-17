@@ -8,6 +8,8 @@ import routes from './routes';
 import { default as Splash } from './components/Splash'
 import { default as Login } from './components/Login'
 import { default as Signup } from './components/Signup'
+import { default as EmailSignup } from './components/EmailSignup'
+import { default as FBSignup } from './components/FBSignup'
 
 
 export class fbloginapp extends Component {
@@ -23,8 +25,13 @@ export class fbloginapp extends Component {
         return <Splash navigator={navigator} />;
         // return <Signup navigator={navigator} />;
         // return <Login navigator={navigator} />;
+        // return <EmailSignup navigator={navigator} />;
       case 'signup':
         return <Signup navigator={navigator} />;
+      case 'emailsignup':
+        return <EmailSignup navigator={navigator} />;
+      case 'fbsignup':
+        return <FBSignup navigator={navigator} />;
       case 'login':
         return <Login navigator={navigator} />;
     }
